@@ -2,6 +2,10 @@ import os
 import json
 from datetime import datetime
 
+# ----------------------------------------
+# Core Memory Operations
+# ----------------------------------------
+
 def remember(key, value):
     # Define a path to the memory file
     memory_file="memory/memory.json"
@@ -52,7 +56,11 @@ def forget(key):
     
     else:
         return False
-    
+
+# ----------------------------------------
+# Expense Management
+# ----------------------------------------
+
 def add_expenses():
     """Adds daily expenses to an expense tracker file"""
     expense_file="memory/expenses.json"
@@ -145,74 +153,7 @@ def view_expenses():
                 date=expense.get("date", "")
                 time=expense.get("time", "")
                 print(f"  - ₹{amount:.2f} | {description} | {date} @ {time}")
-        
-def set_budget(category, budget):
-    """Sets a budget for the specified category"""
-    budget_file="memory/budgets.json"
-    
-    if not os.path.exists(budget_file):
-        with open(budget_file, "w") as file:
-            json.dump({}, file, indent=4)
-            budgets={}
-    else:
-        with open(budget_file, "r") as file:
-            budgets=json.load(file)
-            
-    budget=float(budget)
-    
-    if category in budgets:
-        choice=input("Sir, you have already set a budget for this category, would you like to update it? (yes/no): ").strip().lower()
-        if choice != "yes":
-            print("Very well, sir. The budget remains unchanged")
-            return
-    budgets[category]=budget
-    
-    with open(budget_file, "w") as file:
-        json.dump(budgets, file, indent=4)
-    
-    print(f"Sir, a budget of ₹{budget} has been set for {category}")
-    
-def view_budget():
-    """Displays the set budgets"""
-    budget_file="memory/budgets.json"
-    
-    if not os.path.exists(budget_file):
-        print("Sir, I am afraid you have not set any budgets yet.")
-        return
-        
-    with open(budget_file, "r") as file:
-        budgets=json.load(file)
-    
-    
-    while True:  
-        choice=input("Would you like to see all budgets or a specific category? (all/specific): ").strip().lower()    
-        if choice == "all":  
-            print("\nSir, here are your allocated budgets:\n")
-            # Header
-            print("Category".ljust(20) + "| " + "Budget".rjust(12))
-            print("-" * 35)
-            
-            for category in budgets:
-                budget=budgets[category]
-                print(f"{category.title().ljust(20)}| ₹{budget:>11.2f}")   
                 
-            # Footer
-            print("-" * 35)
-            print(f"Total Budget: ₹{len(budgets)}\n")
-    
-        elif choice == "specific":
-            specific_category=input("Which category budget would you like to view? ")
-            if specific_category in budgets:
-                print(f"Sir, the budget you've set for '{specific_category.title()}' is ₹{budgets[specific_category]:,.2f}.")
-            else:
-                print(f"I'm afraid I couldn't locate a budget for '{specific_category}', sir.")
-        
-        elif choice == "done":
-            print("Exiting budget view")
-            break
-        else:
-            print("Apologies, sir. I didn't quite catch that. Please type 'all' or 'specific'.")
-
 def edit_expense():
     """Lets the user edit his logged expenses"""
     expense_file="memory/expenses.json"
@@ -358,6 +299,77 @@ def manage_category_deletion():
         return
     with open(expense_file, "w") as file:
         json.dump(expenses, file, indent=4)
+        
+# ----------------------------------------
+# Budget Management
+# ----------------------------------------
+        
+def set_budget(category, budget):
+    """Sets a budget for the specified category"""
+    budget_file="memory/budgets.json"
+    
+    if not os.path.exists(budget_file):
+        with open(budget_file, "w") as file:
+            json.dump({}, file, indent=4)
+            budgets={}
+    else:
+        with open(budget_file, "r") as file:
+            budgets=json.load(file)
+            
+    budget=float(budget)
+    
+    if category in budgets:
+        choice=input("Sir, you have already set a budget for this category, would you like to update it? (yes/no): ").strip().lower()
+        if choice != "yes":
+            print("Very well, sir. The budget remains unchanged")
+            return
+    budgets[category]=budget
+    
+    with open(budget_file, "w") as file:
+        json.dump(budgets, file, indent=4)
+    
+    print(f"Sir, a budget of ₹{budget} has been set for {category}")
+    
+def view_budget():
+    """Displays the set budgets"""
+    budget_file="memory/budgets.json"
+    
+    if not os.path.exists(budget_file):
+        print("Sir, I am afraid you have not set any budgets yet.")
+        return
+        
+    with open(budget_file, "r") as file:
+        budgets=json.load(file)
+    
+    
+    while True:  
+        choice=input("Would you like to see all budgets or a specific category? (all/specific): ").strip().lower()    
+        if choice == "all":  
+            print("\nSir, here are your allocated budgets:\n")
+            # Header
+            print("Category".ljust(20) + "| " + "Budget".rjust(12))
+            print("-" * 35)
+            
+            for category in budgets:
+                budget=budgets[category]
+                print(f"{category.title().ljust(20)}| ₹{budget:>11.2f}")   
+                
+            # Footer
+            print("-" * 35)
+            print(f"Total Budget: ₹{len(budgets)}\n")
+    
+        elif choice == "specific":
+            specific_category=input("Which category budget would you like to view? ")
+            if specific_category in budgets:
+                print(f"Sir, the budget you've set for '{specific_category.title()}' is ₹{budgets[specific_category]:,.2f}.")
+            else:
+                print(f"I'm afraid I couldn't locate a budget for '{specific_category}', sir.")
+        
+        elif choice == "done":
+            print("Exiting budget view")
+            break
+        else:
+            print("Apologies, sir. I didn't quite catch that. Please type 'all' or 'specific'.")
     
 def delete_budget_category():
     budget_file="memory/budgets.json"
@@ -390,6 +402,10 @@ def delete_budget_category():
     with open(budget_file, "w") as file:
         json.dump(budgets, file, indent=4)
     print(f"The budget for '{cat_choice}' has been removed, sir.")
+    
+# ----------------------------------------
+# Monthly Reset and Archival
+# ----------------------------------------
     
 def reset_monthly_expense():
     """Resets the expense every month"""
