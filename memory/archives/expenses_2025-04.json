@@ -1,0 +1,120 @@
+{
+    "Food": [
+        {
+            "amount": 250.0,
+            "description": "Lunch",
+            "date": "2025-04-22",
+            "time": "13:15"
+        },
+        {
+            "amount": 200.0,
+            "description": "Breakfast",
+            "date": "2025-04-22",
+            "time": "9:30"
+        },
+        {
+            "amount": 150.0,
+            "description": "Snacks",
+            "date": "2025-04-22",
+            "time": "21:37"
+        },
+        {
+            "amount": 200.0,
+            "description": "Snacks",
+            "date": "2025-04-22",
+            "time": "17:30"
+        },
+        {
+            "amount": 200.0,
+            "description": "Breakfast",
+            "date": "2025-04-23",
+            "time": "9:00"
+        }
+    ],
+    "Books": [
+        {
+            "amount": 499.0,
+            "description": "Novel, Jack Reacher, Nothing to Lose",
+            "date": "2025-04-05",
+            "time": "16:30"
+        },
+        {
+            "amount": 399.0,
+            "description": "Comics",
+            "date": "2025-04-22",
+            "time": "14:20"
+        },
+        {
+            "amount": 1299.0,
+            "description": "Spiderman Commics",
+            "date": "2025-04-22",
+            "time": "14:30"
+        },
+        {
+            "amount": 200.0,
+            "description": "Tinkle Comics",
+            "date": "2025-04-22",
+            "time": "14:00"
+        },
+        {
+            "amount": 200.0,
+            "description": "Thinkdigit Magazine",
+            "date": "2025-04-22",
+            "time": "14:04"
+        }
+    ],
+    "Bills": [
+        {
+            "amount": 953.0,
+            "description": "Electricity Bill",
+            "date": "2025-04-22",
+            "time": "22:16"
+        },
+        {
+            "amount": 308.0,
+            "description": "Water Bill",
+            "date": "2025-04-22",
+            "time": "22:17"
+        },
+        {
+            "amount": 400.0,
+            "description": "Internet Bill",
+            "date": "2025-04-22",
+            "time": "22:27"
+        },
+        {
+            "amount": 1172.0,
+            "description": "Jio Internet Bill",
+            "date": "2025-04-23",
+            "time": "11:48"
+        },
+        {
+            "amount": 1312.0,
+            "description": "Act Internet Bill",
+            "date": "2025-04-23",
+            "time": "11:49"
+        }
+    ],
+    "Travel": [
+        {
+            "amount": 9216.0,
+            "description": "Air ticket to bangalore",
+            "date": "2025-04-23",
+            "time": "11:04"
+        }
+    ],
+    "Shopping": [
+        {
+            "amount": 3000.0,
+            "description": "Pair of Jeans",
+            "date": "2025-04-23",
+            "time": "10:00"
+        },
+        {
+            "amount": 500.0,
+            "description": "Grocery",
+            "date": "2025-04-23",
+            "time": "11:00"
+        }
+    ]
+}
