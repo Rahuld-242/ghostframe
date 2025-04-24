@@ -1,5 +1,0 @@
-Hello, World
-
-This is my test text file
-
-Everything works fine
